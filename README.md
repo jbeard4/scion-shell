@@ -6,7 +6,7 @@ scion-shell prints state ids on state entry and exit, so it can be used for demo
 
 When invoking from a tty, stdin is the shell, so it can work as a simple SCXML interpreter shell. 
 
-scion-dev can also make the SCION interpreter available over the network using netcat. 
+scion-shell can also make the SCION interpreter available over the network using netcat. 
 
     netcat -l 8000 |  node scion-shell.js node_modules/scion/test/scxml-test-framework/test/basic/basic1.scxml
 
