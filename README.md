@@ -1,3 +1,5 @@
+scion-shell provides a simple shell environment for the SCION SCXML interpreter. It accepts SCXML events via stdin, and thus can be used to integrate SCXML with shell programming.
+
 scion-shell accepts a single argument which is a path to an SCXML file. It instantiates an SCXML interpreter from this SCXML file, and then accepts events via stdin.  
 
 scion-shell prints state ids on state entry and exit, so it can be used for demo purposes.  
