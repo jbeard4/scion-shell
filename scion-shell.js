@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var scion = require('scion');
 
 function printUsage(){

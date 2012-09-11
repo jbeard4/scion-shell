@@ -34,5 +34,6 @@
         "scion" : "*"
     },
     "engines" : { "node" : ">=0.8.1" },
-    "main": "./scion-shell"
+    "main": "./scion-shell",
+    "bin": "./scion-shell.js"
 }
