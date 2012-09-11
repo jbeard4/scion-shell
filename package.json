@@ -6,7 +6,8 @@
         "scxml",
         "statecharts",
         "w3c",
-        "javascript"
+        "javascript",
+        "shell"
     ],
     "maintainers": [{
         "name": "Jacob Beard",

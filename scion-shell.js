@@ -1,6 +1,14 @@
 var scion = require('scion');
 
+function printUsage(){
+    console.log('Usage: node scion-shell path/to/file.scxml');
+}
+
 var pathToScxml = process.argv[2];
+if(!pathToScxml){
+    printUsage();
+    process.exit(1);
+}
 
 //initialize the scxml file
 scion.pathToModel(pathToScxml,function(err,model){
@@ -24,9 +32,16 @@ scion.pathToModel(pathToScxml,function(err,model){
 
     var dataBuffer = new DataBuffer({ stream : process.stdin });
 
-    dataBuffer.on('data',function(event){
-        //assume an event
+    dataBuffer.on('data',function(line){
+        //try to parse as JSON. Otherwise just use event.
+        try {
+            var event = JSON.parse(line);
+        }catch(e){
+            event = line;
+        }
+
         scxml.gen(event);   //pass it into the SCXML file
+        
     });
 
     process.stdin.resume();
