@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="ScxmlViz.css"></link>
+        <script src="http://d3js.org/d3.v2.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="ScxmlViz.js"></script>
+        <script>
+            $(document).ready(function(){
+                $.get('/scxml',function(doc,textStatus,jqXhr){
+                        try {
+                            var body = $('body');
+                            body.empty(); 
+                            ScxmlViz(body[0],doc,body.width(),body.height());
+                            $.get('/ready');    //just let the server know we're really ready
+                        }catch(e){
+                            alert(e.message);
+                        }
+                },'xml');
+            });
+        </script>
+        <style type="text/css">
+            body {
+                margin : 0px;
+            } 
+        </style>
+    </head>
+    <body>
+    </body>
+</html>

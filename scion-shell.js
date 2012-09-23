@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var scion = require('scion');
+var scion = require('scion'),
+    graphicalDebugger = require('./appjs-graphical-debugger');
 
 function printUsage(){
     console.log('Usage: node scion-shell path/to/file.scxml');
@@ -12,39 +13,53 @@ if(!pathToScxml){
     process.exit(1);
 }
 
-//initialize the scxml file
-scion.pathToModel(pathToScxml,function(err,model){
-    if(err) throw err;
+//TODO:make this optional
+graphicalDebugger(pathToScxml,function(window){
 
-    //TODO: register event listeners
-    var scxml = new scion.SCXML(model);
+    //initialize the scxml file
+    scion.pathToModel(pathToScxml,function(err,model){
+        if(err) throw err;
 
-    scxml.registerListener({
-        onEntry : function(stateId){
-            console.log('Entered',stateId);
-        },
-        onExit : function(stateId){
-            console.log('Exited',stateId);
-        }
-    }); 
+        //TODO: register event listeners
+        var scxml = new scion.SCXML(model);
 
-    scxml.start();  //call start
+        scxml.registerListener({
+            onEntry : function(stateId){
+                console.log('Entered',stateId);
+            },
+            onExit : function(stateId){
+                console.log('Exited',stateId);
+            }
+        }); 
 
-    var DataBuffer = require('./DataBuffer');
+        scxml.registerListener({
+            onEntry : function(stateId){
+                window.d3.select('#' + stateId).classed('highlighted',true);
+            },
+            onExit : function(stateId){
+                window.d3.select('#' + stateId).classed('highlighted',false);
+            }
+        }); 
 
-    var dataBuffer = new DataBuffer({ stream : process.stdin });
+        scxml.start();  //call start
 
-    dataBuffer.on('data',function(line){
-        //try to parse as JSON. Otherwise just use event.
-        try {
-            var event = JSON.parse(line);
-        }catch(e){
-            event = line;
-        }
+        var DataBuffer = require('./DataBuffer');
 
-        scxml.gen(event);   //pass it into the SCXML file
-        
+        var dataBuffer = new DataBuffer({ stream : process.stdin });
+
+        dataBuffer.on('data',function(line){
+            //try to parse as JSON. Otherwise just use event.
+            try {
+                var event = JSON.parse(line);
+            }catch(e){
+                event = line;
+            }
+
+            scxml.gen(event);   //pass it into the SCXML file
+            
+        });
+
+        process.stdin.resume();
     });
 
-    process.stdin.resume();
 });
