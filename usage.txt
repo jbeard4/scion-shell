@@ -1,0 +1,19 @@
+Usage: node [--harmony] scion-shell [options] path/to/file.scxml 
+
+Options:
+
+"event-format"    : One of ["json","string","auto"]. 
+                    If "json", expects input to be formatted as JSON.
+                    If "string", expects input to simply be a string, which is the event name. 
+                        It is not possible to pass in event data using this option.
+                    If "auto", the interpreter will attempt to parse the input as JSON. If that fails, input will be used as an event name.
+                        This is the default option.
+
+"event-delimiter" : This is the character which serves as a delimiter between events. By default it is the newline character.
+
+"log-state-entry" : If set to true, the interpreter will log the ids of states entered to stdout. This can be useful in debugging.
+
+"log-state-exit"  : If set to true, the interpreter will log the ids of states exited to stdout.
+
+"graphical-trace" : If set to true, will graphically render the SCXML file, and animate the rendering in response to state enter and exit actions.
+                        If this option is true, then node must be executed with the "--harmony" flag.

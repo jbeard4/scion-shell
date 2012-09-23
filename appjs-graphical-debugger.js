@@ -30,19 +30,19 @@ function openGraphicalDebugWindow(pathToDoc,readyCb){
 
     // prepare the window when first created
     window.on('create', function(){
-        console.log("Window Created");
+        //console.log("Window Created");
         // window.frame controls the desktop window
         window.frame.show().center();
     });
 
     // the window is ready when the DOM is loaded
     window.on('ready', function(){
-        console.log("Window Ready");
+        //console.log("Window Ready");
     });
 
     // cleanup code when window is closed
     window.on('close', function(){
-        console.log("Window Closed");
+        //console.log("Window Closed");
     });
 }
 

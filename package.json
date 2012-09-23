@@ -32,7 +32,8 @@
     ],
     "dependencies" : {
         "scion" : "*",
-        "appjs" : "*"
+        "appjs" : "*",
+        "nopt" : "*"
     },
     "engines" : { "node" : ">=0.8.1" },
     "main": "./scion-shell",
