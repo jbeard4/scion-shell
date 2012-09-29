@@ -32,7 +32,8 @@
     ],
     "dependencies" : {
         "scion" : "*",
-        "appjs" : "*",
+        "node-static" : "*",
+        "socket.io" : "*",
         "nopt" : "*"
     },
     "engines" : { "node" : ">=0.8.1" },

@@ -1,4 +1,4 @@
-Usage: node [--harmony] scion-shell [options] path/to/file.scxml 
+Usage: node scion-shell [options] path/to/file.scxml 
 
 Options:
 
@@ -15,5 +15,5 @@ Options:
 
 "log-state-exit"  : If set to true, the interpreter will log the ids of states exited to stdout.
 
-"graphical-trace" : If set to true, will graphically render the SCXML file, and animate the rendering in response to state enter and exit actions.
-                        If this option is true, then node must be executed with the "--harmony" flag.
+"graphical-trace" : Accepts port number as an argument. Starts an HTTP and WebSocket server on the given port. 
+                    The client will graphically render the SCXML file, and animate the rendering in response to state entry and exit actions.
