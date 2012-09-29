@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var scion = require('scion'),
+    path = require('path'),
     nopt = require("nopt");
 
 //parse opts
@@ -16,7 +17,7 @@ var knownOpts = {
 var parsed = nopt(knownOpts);
 
 function printUsage(){
-    console.log(require('fs').readFileSync('usage.txt','utf8'));
+    console.log(require('fs').readFileSync(path.join(__dirname,'usage.txt'),'utf8'));
 }
 
 var pathToScxml = parsed.argv && parsed.argv.remain[0];
@@ -31,7 +32,6 @@ function startTraceServer(scxml){
     var app = require('http').createServer(handler),
         io = require('socket.io').listen(app,{log : false}),
         sttic = require('node-static'),
-        path = require('path'),
         fs = require('fs');
 
     app.listen(parsed["graphical-trace"]);
