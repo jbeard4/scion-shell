@@ -1,19 +1,30 @@
-Usage: node scion-shell [options] path/to/file.scxml 
+Usage: scion-shell [options] path/to/file.scxml 
 
 Options:
 
-"event-format"    : One of ["json","string","auto"]. 
-                    If "json", expects input to be formatted as JSON.
-                    If "string", expects input to simply be a string, which is the event name. 
-                        It is not possible to pass in event data using this option.
-                    If "auto", the interpreter will attempt to parse the input as JSON. If that fails, input will be used as an event name.
-                        This is the default option.
+event-format ["json" | "string" | "auto"]
 
-"event-delimiter" : This is the character which serves as a delimiter between events. By default it is the newline character.
+    If "json", expects input to be formatted as JSON.
 
-"log-state-entry" : If set to true, the interpreter will log the ids of states entered to stdout. This can be useful in debugging.
+    If "string", expects input to simply be a string, which is the event name. 
+        It is not possible to pass in event data using this option.
 
-"log-state-exit"  : If set to true, the interpreter will log the ids of states exited to stdout.
+    If "auto", the interpreter will attempt to parse the input as JSON. If that fails, input will be used as an event name.
+        This is the default option.
 
-"graphical-trace" : Accepts port number as an argument. Starts an HTTP and WebSocket server on the given port. 
-                    The client will graphically render the SCXML file, and animate the rendering in response to state entry and exit actions.
+event-delimiter <string>
+
+    This is the string which serves as a delimiter between events. By default it is the newline character.
+
+graphical-trace <port>
+
+    Accepts port number as an argument. Starts an HTTP and WebSocket server on the given port. 
+    The client will graphically render the SCXML file, and animate the rendering in response to state entry and exit actions.
+
+log-state-entry 
+
+    If set to true, the interpreter will log the ids of states entered to stdout. This can be useful in debugging.
+
+log-state-exit   
+
+    If set to true, the interpreter will log the ids of states exited to stdout.
