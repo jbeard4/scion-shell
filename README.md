@@ -25,7 +25,7 @@ If using npm:
 
     npm install -g scion-shell
 
-Or, to directly from github:
+Or, install directly from github:
 
     git clone --recursive git://github.com/jbeard4/scion-shell.git  #clones with git submodule dependencies
     cd scion-shell
