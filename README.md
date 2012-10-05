@@ -17,6 +17,9 @@ scion-shell can also be used for demonstration purposes, in two ways. First, sci
 
 <hr>
 
+
+<hr>
+
     Usage: scion-shell [options] path/to/file.scxml 
 
     Options:
