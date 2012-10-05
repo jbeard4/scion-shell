@@ -1,3 +1,6 @@
+Description
+-----------
+
 scion-shell provides a simple shell environment for the SCION SCXML interpreter. It accepts SCXML events via stdin, and thus can be used to integrate SCXML with shell programming.
 
 scion-shell accepts a single argument which is a path to an SCXML file. It instantiates an SCXML interpreter from this SCXML file, and then accepts events via stdin.  
@@ -6,7 +9,7 @@ When invoking from a tty, stdin is the shell, so it can work as a simple SCXML i
 
 Because scion-shell accepts events via stdin, scion-shell can accept events over the network by piping from netcat.
 
-    netcat -l 8000 |  node scion-shell.js node_modules/scion/test/scxml-test-framework/test/basic/basic1.scxml
+    netcat -l 8000 |  scion-shell node_modules/scion/test/scxml-test-framework/test/basic/basic1.scxml
 
 Events can then be sent in using netcat:
 
@@ -15,10 +18,20 @@ Events can then be sent in using netcat:
 
 scion-shell can also be used for demonstration purposes, in two ways. First, scion-shell can print state ids on state entry and exit. Second, scion-shell can start an HTTP server on a port which serves a graphical representation of the SCXML document, which is animated via websockets in response to input events. 
 
-<hr>
+Installation
+------------
 
+If using npm:
 
-<hr>
+    npm install -g scion-shell
+
+Or, to directly from github:
+
+    git clone --recursive git://github.com/jbeard4/scion-shell.git
+    node scion-shell/scion-shell.js
+
+Usage
+-----
 
     Usage: scion-shell [options] path/to/file.scxml 
 
