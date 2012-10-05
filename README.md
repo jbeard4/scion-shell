@@ -27,8 +27,10 @@ If using npm:
 
 Or, to directly from github:
 
-    git clone --recursive git://github.com/jbeard4/scion-shell.git
-    node scion-shell/scion-shell.js
+    git clone --recursive git://github.com/jbeard4/scion-shell.git  #clones with git submodule dependencies
+    cd scion-shell
+    npm install             #installs npm dependencies
+    node scion-shell.js     #runs scion-shell
 
 Usage
 -----
